@@ -1,60 +1,95 @@
 import Link from "next/link"
+import { Twitter, Linkedin, Instagram, Youtube } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200/50">
+    <footer className="bg-black text-white">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <div className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
-            <div className="flex items-center gap-2">
-              <div className="text-red-600">
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M50 10 C30 10, 15 25, 15 45 C15 65, 30 80, 50 80 C70 80, 85 65, 85 45 C85 25, 70 10, 50 10 Z M50 20 C65 20, 75 30, 75 45 C75 60, 65 70, 50 70 C35 70, 25 60, 25 45 C25 30, 35 20, 50 20 Z" />
-                  <path d="M40 35 L45 40 L55 30 L60 35 L50 45 L40 35 Z" fill="white" />
+        <div className="flex flex-col items-center justify-between gap-8 sm:flex-row sm:items-start">
+          <div className="flex flex-col items-center gap-4 text-center sm:items-start sm:text-left">
+            <div className="flex items-center gap-3">
+              <div className="relative h-12 w-12">
+                <svg viewBox="0 0 100 140" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M50 10 C55 10 60 12 63 15 L70 20 C75 25 78 30 80 35 L82 45 C83 50 83 55 82 60 L80 70 C78 80 75 90 70 98 L65 105 C60 112 55 118 50 122 L45 125 C40 128 35 130 30 130 L25 128 C20 125 15 120 12 115 L8 105 C5 95 3 85 3 75 L3 65 C3 55 5 45 8 38 L12 28 C15 20 20 15 25 12 L35 8 C40 8 45 9 50 10 Z"
+                    fill="#DC2626"
+                    stroke="#7F1D1D"
+                    strokeWidth="1"
+                  />
+                  <path
+                    d="M30 25 L70 25 M30 35 L70 35 M30 45 L70 45 M30 55 L70 55 M30 65 L70 65 M30 75 L70 75 M30 85 L70 85 M30 95 L70 95"
+                    stroke="#450A0A"
+                    strokeWidth="2"
+                    opacity="0.6"
+                  />
                 </svg>
               </div>
               <div>
-                <p className="text-lg font-bold text-black">Emerge Youth</p>
-                <p className="text-xs text-gray-600">Innovation Initiative</p>
+                <p className="text-xl font-bold text-white">Emerge Youth</p>
+                <p className="text-sm text-gray-400">Innovation Initiative</p>
               </div>
             </div>
-            <p className="text-sm text-gray-600">© 2023 Emerge Youth. All rights reserved.</p>
+            <p className="text-sm text-gray-400">Empowering African Youth Through Innovation</p>
+            <p className="text-sm text-gray-500">© 2025 Emerge Youth. All rights reserved.</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
-            <Link href="/about" className="hover:text-red-600">
-              About
-            </Link>
-            <Link href="/programs" className="hover:text-red-600">
-              Programs
-            </Link>
-            <Link href="/resources" className="hover:text-red-600">
-              Resources
-            </Link>
-            <Link href="/contact" className="hover:text-red-600">
-              Contact
-            </Link>
-          </div>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 sm:justify-start">
+              <Link href="/about" className="hover:text-red-500 transition-colors">
+                About
+              </Link>
+              <Link href="/programs" className="hover:text-red-500 transition-colors">
+                Programs
+              </Link>
+              <Link href="/community" className="hover:text-red-500 transition-colors">
+                Community
+              </Link>
+              <Link href="/resources" className="hover:text-red-500 transition-colors">
+                Resources
+              </Link>
+              <Link href="/contact" className="hover:text-red-500 transition-colors">
+                Contact
+              </Link>
+            </div>
 
-          <div className="flex items-center gap-4">
-            <a href="#" className="text-gray-600 hover:text-red-600">
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22.46,6.52a.5.5,0,0,0-.47-.32H19.9a3,3,0,0,0-2.6-1.57,2.94,2.94,0,0,0-2.11.86,3,3,0,0,0-1.25.3V7.5C10,7.15,7.93,5.69,7.9,5.67a.5.5,0,0,0-.85.31c-.27,3,1.19,5,2.12,6.14a6.93,6.93,0,0,0,1.37,1.51c-.95,1.1-2.45,1.67-2.47,1.68a.5.5,0,0,0-.24.74c.05.07.24.32.7.54,1.15.56,2.23.69,3.75.69,4.42,0,8.11-3.4,8.48-7.78l1.87-1.87A.5.5,0,0,0,22.46,6.52Z"></path>
-              </svg>
-            </a>
-            <a href="#" className="text-gray-600 hover:text-red-600">
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-            </a>
-            <a href="#" className="text-gray-600 hover:text-red-600">
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-              </svg>
-            </a>
+            <div className="flex items-center justify-center gap-4 sm:justify-start">
+              <a
+                href="https://twitter.com/Eyii_africa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a
+                href="https://linkedin.com/company/eyii-africa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com/Eyii_africa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://youtube.com/@Eyii_africa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
