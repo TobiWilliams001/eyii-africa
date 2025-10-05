@@ -23,10 +23,20 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="text-red-600">
-                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M50 10 C30 10, 15 25, 15 45 C15 65, 30 80, 50 80 C70 80, 85 65, 85 45 C85 25, 70 10, 50 10 Z M50 20 C65 20, 75 30, 75 45 C75 60, 65 70, 50 70 C35 70, 25 60, 25 45 C25 30, 35 20, 50 20 Z" />
-                  <path d="M40 35 L45 40 L55 30 L60 35 L50 45 L40 35 Z" fill="white" />
+              <div className="relative h-10 w-10">
+                <svg viewBox="0 0 100 140" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M50 10 C55 10 60 12 63 15 L70 20 C75 25 78 30 80 35 L82 45 C83 50 83 55 82 60 L80 70 C78 80 75 90 70 98 L65 105 C60 112 55 118 50 122 L45 125 C40 128 35 130 30 130 L25 128 C20 125 15 120 12 115 L8 105 C5 95 3 85 3 75 L3 65 C3 55 5 45 8 38 L12 28 C15 20 20 15 25 12 L35 8 C40 8 45 9 50 10 Z"
+                    fill="#DC2626"
+                    stroke="#7F1D1D"
+                    strokeWidth="1"
+                  />
+                  <path
+                    d="M30 25 L70 25 M30 35 L70 35 M30 45 L70 45 M30 55 L70 55 M30 65 L70 65 M30 75 L70 75 M30 85 L70 85 M30 95 L70 95"
+                    stroke="#450A0A"
+                    strokeWidth="2"
+                    opacity="0.6"
+                  />
                 </svg>
               </div>
               <div>
