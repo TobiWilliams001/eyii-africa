@@ -10,9 +10,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Eyii Africa - Empowering African Youth Through Innovation",
+  title: "Emerge Youth Innovation Initiative - Empowering African Youth",
   description:
-    "Eyii Africa is dedicated to fostering the next generation of African leaders by providing access to cutting-edge technology, entrepreneurial training, and career development resources.",
+    "Emerge Youth Innovation Initiative is dedicated to fostering the next generation of African leaders by providing access to cutting-edge technology, entrepreneurial training, and career development resources.",
   generator: "v0.app",
 }
 
