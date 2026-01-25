@@ -1,282 +1,293 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { BookOpen, Video, FileText, Download, Search } from "lucide-react"
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { FAQSection } from '@/components/faq-section'
 
 export default function ResourcesPage() {
+  const resourceFaqs = [
+    {
+      question: 'Are all resources free?',
+      answer:
+        'Yes, all resources in our library are completely free for EYII community members. We believe knowledge and tools should not be behind paywalls. Some resources like video courses may require email signup for tracking purposes.',
+    },
+    {
+      question: 'Can I download resources for offline use?',
+      answer:
+        'Most resources can be downloaded as PDF or other formats. Once you download them, they are yours to keep and use. You can access them offline anytime, anywhere.',
+    },
+    {
+      question: 'How often are new resources added?',
+      answer:
+        'We add new resources weekly based on community feedback and emerging needs. You can subscribe to our newsletter to get notified when new resources are added to your areas of interest.',
+    },
+    {
+      question: 'Can I contribute resources?',
+      answer:
+        'Absolutely! We welcome community members to contribute templates, guides, case studies, and other resources they have created. Contact us to learn how to submit your resource for community benefit.',
+    },
+    {
+      question: 'Who creates these resources?',
+      answer:
+        'Resources are created by EYII team members, mentors, industry experts, and community members. We ensure all resources are high-quality, practical, and contextual to African opportunities and challenges.',
+    },
+    {
+      question: 'Are resources specific to African context?',
+      answer:
+        'Yes! Most of our resources are specifically written or adapted for African students and founders. We highlight Africa-specific opportunities, challenges, strategies, and success stories.',
+    },
+  ]
+
+  const resourceCategories = [
+    {
+      title: 'Career Development Guides',
+      description:
+        'Resume templates, interview prep guides, networking scripts, LinkedIn optimization playbooks, and salary negotiation frameworks.',
+      status: 'Coming Soon',
+    },
+    {
+      title: 'Entrepreneurship Toolkit',
+      description:
+        'Business model canvas templates, pitch deck examples, fundraising guides, startup checklists, and founder stories.',
+      status: 'Coming Soon',
+    },
+    {
+      title: 'Innovation Resources',
+      description:
+        'Design thinking frameworks, problem-solving toolkits, case study libraries, and innovation methodologies.',
+      status: 'Coming Soon',
+    },
+    {
+      title: 'Leadership Library',
+      description:
+        'Leadership frameworks, team management guides, communication templates, and personal development resources.',
+      status: 'Coming Soon',
+    },
+    {
+      title: 'Opportunity Database',
+      description:
+        'Curated list of internships, scholarships, competitions, grants, and programs for African students.',
+      status: 'Coming Soon',
+    },
+  ]
+
+  const currentResources = [
+    {
+      title: 'ASN Resource Hub',
+      description:
+        'Access the African Students Network resource library with career guides, templates, and recorded workshops.',
+      cta: 'Visit ASN Resources →',
+      link: 'https://asnafrica.org',
+    },
+    {
+      title: 'EYII Newsletter',
+      description:
+        'Weekly insights, opportunities, and stories delivered to your inbox. Stay updated on programs, events, and community news.',
+      cta: 'Subscribe on Substack →',
+      link: '#',
+    },
+  ]
+
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <Header />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-red-50 to-white">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-black text-balance">
-                Resources for Your Journey
+        <section className="relative py-24 md:py-40 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-blue-50/30 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-red-100/40 rounded-full blur-3xl -z-10" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl -z-10" />
+
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black mb-6 text-balance leading-tight">
+                Resources Hub
               </h1>
-              <p className="mt-6 text-lg text-gray-600 text-pretty">
-                Access a wealth of learning materials, tools, and guides to support your innovation and entrepreneurship
-                journey.
+              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full mb-8" />
+              <p className="text-lg md:text-xl text-gray-700 mb-6 text-pretty leading-relaxed max-w-2xl">
+                Guides, tools, and content to support your journey
               </p>
-
-              <div className="mt-8 flex gap-2 max-w-xl mx-auto">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  <Input
-                    type="search"
-                    placeholder="Search resources..."
-                    className="pl-10 bg-white border-gray-200 focus:border-red-600 focus:ring-red-600"
-                  />
-                </div>
-                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">Search</Button>
-              </div>
+              <p className="text-base md:text-lg text-gray-600 mb-12 text-pretty leading-relaxed max-w-3xl">
+                We are building a comprehensive library of resources to help you succeed in your career, entrepreneurship, and leadership journey. Check back soon for exciting additions!
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Resource Categories */}
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">Browse by Category</h2>
-              <p className="mt-4 text-lg text-gray-600">Find the resources you need to succeed.</p>
+        {/* Coming Soon Resources */}
+        <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                What is Coming to the Resources Hub
+              </h2>
+              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              <Card className="border border-red-600/20 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer">
-                <CardContent className="p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-600/10 mb-4">
-                    <BookOpen className="h-8 w-8 text-red-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-black mb-2">Learning Guides</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Comprehensive guides on innovation, entrepreneurship, and technology.
-                  </p>
-                  <p className="text-red-600 font-semibold text-sm">45 Resources</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border border-red-600/20 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer">
-                <CardContent className="p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-600/10 mb-4">
-                    <Video className="h-8 w-8 text-red-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-black mb-2">Video Tutorials</h3>
-                  <p className="text-gray-600 text-sm mb-4">Step-by-step video lessons from industry experts.</p>
-                  <p className="text-red-600 font-semibold text-sm">32 Videos</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border border-red-600/20 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer">
-                <CardContent className="p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-600/10 mb-4">
-                    <FileText className="h-8 w-8 text-red-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-black mb-2">Templates</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Ready-to-use templates for business plans, pitches, and more.
-                  </p>
-                  <p className="text-red-600 font-semibold text-sm">28 Templates</p>
-                </CardContent>
-              </Card>
-
-              <Card className="border border-red-600/20 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer">
-                <CardContent className="p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-600/10 mb-4">
-                    <Download className="h-8 w-8 text-red-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-black mb-2">Toolkits</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Complete toolkits for launching and growing your venture.
-                  </p>
-                  <p className="text-red-600 font-semibold text-sm">15 Toolkits</p>
-                </CardContent>
-              </Card>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {resourceCategories.map((category, index) => (
+                <Card
+                  key={index}
+                  className="bg-white border border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden p-0"
+                >
+                  <div className="h-1 bg-gradient-to-r from-red-600 to-red-400" />
+                  <CardContent className="p-8">
+                    <div className="flex items-start justify-between mb-4">
+                      <h3 className="text-lg font-bold text-black flex-1">
+                        {category.title}
+                      </h3>
+                      <span className="ml-2 inline-block px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-full whitespace-nowrap">
+                        {category.status}
+                      </span>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {category.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Featured Resources */}
-        <section className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">Featured Resources</h2>
-              <p className="mt-4 text-lg text-gray-600">Our most popular and highly-rated resources.</p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                <div className="aspect-video w-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                  <BookOpen className="h-16 w-16 text-white" />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-semibold px-2 py-1 bg-red-600/10 text-red-600 rounded">Guide</span>
-                    <span className="text-xs text-gray-500">45 min read</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-black mb-2">The Complete Startup Guide</h3>
-                  <p className="text-gray-600 mb-4">
-                    Everything you need to know about starting and scaling a successful startup in Africa.
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-red-600/20 text-red-600 hover:bg-red-600/10 bg-transparent"
-                  >
-                    Download Free
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                <div className="aspect-video w-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                  <Video className="h-16 w-16 text-white" />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-semibold px-2 py-1 bg-red-600/10 text-red-600 rounded">Video</span>
-                    <span className="text-xs text-gray-500">2 hours</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-black mb-2">Pitch Perfect Masterclass</h3>
-                  <p className="text-gray-600 mb-4">
-                    Learn how to craft and deliver a compelling pitch that wins investors.
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-red-600/20 text-red-600 hover:bg-red-600/10 bg-transparent"
-                  >
-                    Watch Now
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                <div className="aspect-video w-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                  <FileText className="h-16 w-16 text-white" />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-semibold px-2 py-1 bg-red-600/10 text-red-600 rounded">Template</span>
-                    <span className="text-xs text-gray-500">Instant download</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-black mb-2">Business Plan Template</h3>
-                  <p className="text-gray-600 mb-4">
-                    A professional business plan template used by successful African startups.
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-red-600/20 text-red-600 hover:bg-red-600/10 bg-transparent"
-                  >
-                    Download Free
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Learning Paths */}
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">Curated Learning Paths</h2>
-              <p className="mt-4 text-lg text-gray-600">Follow structured learning paths designed for your goals.</p>
+        {/* Available Now */}
+        <section className="py-20 md:py-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                Available Now
+              </h2>
+              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
-              <Card className="border border-red-600/20 p-8">
-                <h3 className="text-2xl font-bold text-black mb-4">Aspiring Entrepreneur Path</h3>
-                <p className="text-gray-600 mb-6">
-                  A comprehensive learning journey from idea validation to launching your first venture.
-                </p>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      1
-                    </div>
-                    <span className="text-gray-700">Idea Generation & Validation</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      2
-                    </div>
-                    <span className="text-gray-700">Business Model Design</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      3
-                    </div>
-                    <span className="text-gray-700">Fundraising Essentials</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      4
-                    </div>
-                    <span className="text-gray-700">Launch & Growth Strategies</span>
-                  </div>
-                </div>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold">Start Learning Path</Button>
-              </Card>
+              {currentResources.map((resource, index) => (
+                <Card
+                  key={index}
+                  className="bg-gradient-to-br from-red-50 to-white border border-red-200 hover:shadow-2xl transition-all duration-300 rounded-xl p-8"
+                >
+                  <h3 className="text-2xl font-bold text-black mb-4">
+                    {resource.title}
+                  </h3>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    {resource.description}
+                  </p>
+                  <a href={resource.link}>
+                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg">
+                      {resource.cta}
+                    </Button>
+                  </a>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              <Card className="border border-red-600/20 p-8">
-                <h3 className="text-2xl font-bold text-black mb-4">Tech Innovator Path</h3>
-                <p className="text-gray-600 mb-6">
-                  Master the skills needed to build innovative tech solutions for African challenges.
-                </p>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      1
-                    </div>
-                    <span className="text-gray-700">Problem Identification</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      2
-                    </div>
-                    <span className="text-gray-700">Product Development</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      3
-                    </div>
-                    <span className="text-gray-700">User Testing & Iteration</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center text-sm font-bold">
-                      4
-                    </div>
-                    <span className="text-gray-700">Scaling Your Solution</span>
-                  </div>
-                </div>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold">Start Learning Path</Button>
-              </Card>
+        {/* Why Resources Matter */}
+        <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                Why We are Building This
+              </h2>
+              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {[
+                {
+                  title: 'Access Shouldn\'t Be a Barrier',
+                  description:
+                    'High-quality career and entrepreneurship resources are often behind paywalls or scattered across the internet. We are centralizing them for free.',
+                },
+                {
+                  title: 'Africa-Specific Context Matters',
+                  description:
+                    'Most resources are written for Western audiences. We are creating guides that understand African realities, markets, and opportunities.',
+                },
+                {
+                  title: 'Save Time, Focus on Growth',
+                  description:
+                    'Instead of spending hours searching for templates and guides, find everything you need in one place and focus on execution.',
+                },
+              ].map((reason, index) => (
+                <Card
+                  key={index}
+                  className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all rounded-xl p-8"
+                >
+                  <h3 className="text-lg font-bold text-black mb-4">
+                    {reason.title}
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    {reason.description}
+                  </p>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Newsletter CTA */}
         <section className="py-16 md:py-24 bg-black text-white">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Get New Resources Delivered</h2>
-              <p className="text-gray-300 mb-8">
-                Subscribe to receive the latest resources, guides, and learning materials directly in your inbox.
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Stay Updated
+              </h2>
+              <p className="text-lg text-gray-300 mb-8">
+                Get resources delivered to your inbox
               </p>
-              <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <Input
+              <p className="text-gray-400 mb-8">
+                Subscribe to our newsletter for curated opportunities, insights, and updates on new resources as we launch them.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-red-500 focus:ring-red-500"
+                  className="flex-1 px-4 py-3 rounded-lg text-black placeholder-gray-400"
                 />
-                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">Subscribe</Button>
-              </form>
+                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-lg transition-all hover:scale-105">
+                  Subscribe
+                </Button>
+              </div>
+              <p className="text-xs text-gray-500 mt-4">
+                We publish weekly. Unsubscribe anytime.
+              </p>
             </div>
           </div>
         </section>
+
+        {/* Final CTA */}
+        <section className="py-16 md:py-24">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+              Building Something Special
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              We are working hard to launch our full resource library
+            </p>
+            <p className="text-base text-gray-600 mb-8">
+              In the meantime, subscribe to our newsletter to get curated resources, opportunities, and updates delivered weekly.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/programs">
+                <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-8 py-3 rounded-lg transition-all hover:scale-105">
+                  Explore Programs
+                </Button>
+              </a>
+              <Button className="border-2 border-red-600 text-red-600 bg-white hover:bg-red-50 font-bold px-8 py-3 rounded-lg transition-all hover:scale-105">
+                Subscribe to Newsletter
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <FAQSection
+          title="Resources FAQs"
+          faqs={resourceFaqs}
+        />
       </main>
 
       <Footer />
