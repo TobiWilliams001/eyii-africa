@@ -10,10 +10,29 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Emerge Youth Innovation Initiative - Empowering African Youth",
+  title: "EYII - Empowering Young African Innovators & Leaders",
   description:
-    "Emerge Youth Innovation Initiative is dedicated to fostering the next generation of African leaders by providing access to cutting-edge technology, entrepreneurial training, and career development resources.",
-  generator: "v0.app",
+    "Access world-class programs in Career Development, Entrepreneurship, Innovation, and Leadership. Join 1,200+ African students building their futures across Nigeria, Ghana, Kenya, and South Africa.",
+  keywords:
+    "African youth, career development, entrepreneurship, innovation, leadership, internships, scholarships, African students",
+  authors: [{ name: "EYII" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://eyii.africa",
+    siteName: "EYII",
+    title: "EYII - Empowering Young African Innovators & Leaders",
+    description:
+      "Access world-class programs in Career Development, Entrepreneurship, Innovation, and Leadership.",
+  },
+  robots: "index, follow",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  
 }
 
 export default function RootLayout({
