@@ -1,144 +1,122 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+'use client'
+
+import Link from 'next/link'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { programs } from '@/lib/data/programs'
 
 export default function ProgramsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <Header />
 
-      <main className="flex-1">
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-black">Our Programs</h1>
-              <p className="mt-4 text-lg text-gray-600">
-                Emerge Youth offers a range of programs designed to empower African youth through innovation,
-                entrepreneurship, and career development. Explore our current offerings and upcoming initiatives.
-              </p>
-            </div>
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-r from-red-600 to-red-700 py-16 sm:py-24 text-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl text-balance">
+              Our Programs
+            </h1>
+            <p className="mt-4 text-xl text-red-100">
+              Comprehensive programs across four pillars designed to empower African students
+            </p>
+            <p className="mt-4 max-w-3xl text-lg text-red-50">
+              From career development to entrepreneurship, innovation to leadership—we provide structured pathways to opportunity.
+            </p>
+          </div>
+        </section>
 
-            <div className="grid gap-12 md:gap-16">
-              {/* School of Innovation */}
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="order-2 md:order-1">
-                  <h2 className="text-3xl font-bold tracking-tight text-black">School of Innovation</h2>
-                  <p className="mt-4 text-gray-600">
-                    The School of Innovation is a flagship program that equips young Africans with the skills and
-                    mindset to become innovators and problem-solvers. Through a blend of theoretical learning and
-                    hands-on projects, participants develop critical thinking, creativity, and collaboration abilities.
-                  </p>
-                  <Card className="mt-6 p-6 border border-gray-200">
-                    <h3 className="text-xl font-bold text-black">Benefits & Success Stories</h3>
-                    <p className="mt-2 text-gray-600">
-                      Participants gain access to mentorship from industry experts, networking opportunities, and
-                      resources to launch their innovative ideas. Alumni have gone on to create successful startups, win
-                      innovation challenges, and contribute to impactful projects in their communities.
-                    </p>
-                  </Card>
-                  <div className="mt-6">
-                    <Button className="bg-red-600 hover:bg-red-700 text-white font-bold transition-transform hover:scale-105">
-                      Apply Now
+        {/* Programs by Pillar */}
+        <section className="py-16 sm:py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {programs.map((pillarGroup, pillarIdx) => (
+              <div key={pillarIdx} className="mb-16">
+                <div className="mb-12">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-4xl">{pillarGroup.icon}</span>
+                    <h2 className="text-3xl font-bold text-black">{pillarGroup.pillar}</h2>
+                  </div>
+                  <Link href={`/pillars/${pillarGroup.pillar.toLowerCase().replace(' ', '-')}`}>
+                    <Button className="bg-red-600 hover:bg-red-700 text-white font-bold">
+                      Explore {pillarGroup.pillar}
                     </Button>
-                  </div>
+                  </Link>
                 </div>
-                <div className="order-1 md:order-2">
-                  <div className="bg-red-50 rounded-xl p-2">
-                    <img
-                      alt="Students in a workshop"
-                      className="rounded-lg aspect-square object-cover w-full"
-                      src="/african-students-in-innovation-workshop.jpg"
-                    />
-                  </div>
-                </div>
-              </div>
 
-              {/* Experience Labs */}
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="order-1">
-                  <div className="bg-red-50 rounded-xl p-2">
-                    <img
-                      alt="Young professional working on a laptop"
-                      className="rounded-lg aspect-square object-cover w-full"
-                      src="/african-professional-working-on-laptop.jpg"
-                    />
-                  </div>
-                </div>
-                <div className="order-2">
-                  <h2 className="text-3xl font-bold tracking-tight text-black">Experience Labs</h2>
-                  <p className="mt-4 text-gray-600">
-                    Experience Labs provide practical, real-world experience in various fields, allowing young people to
-                    explore career paths and gain valuable skills. These labs offer internships, apprenticeships, and
-                    project-based learning opportunities in collaboration with leading organizations.
-                  </p>
-                  <Card className="mt-6 p-6 border border-gray-200">
-                    <h3 className="text-xl font-bold text-black">Benefits & Success Stories</h3>
-                    <p className="mt-2 text-gray-600">
-                      Participants gain hands-on experience, build their professional networks, and enhance their
-                      employability. Many have secured full-time positions with partner organizations or launched their
-                      own ventures based on their lab experiences.
-                    </p>
-                  </Card>
-                  <div className="mt-6">
-                    <Button className="bg-red-600 hover:bg-red-700 text-white font-bold transition-transform hover:scale-105">
-                      Explore Labs
-                    </Button>
-                  </div>
-                </div>
-              </div>
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {pillarGroup.programs.map((program, idx) => (
+                    <Card key={idx} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                      <CardContent className="p-6 flex flex-col h-full">
+                        <div className="mb-4">
+                          <div className={`inline-block rounded-lg px-3 py-1 text-xs font-semibold ${program.statusColor} mb-3`}>
+                            {program.status}
+                          </div>
+                          <h3 className="text-xl font-bold text-black">{program.title}</h3>
+                          {program.subtitle && (
+                            <p className="text-sm text-gray-600">{program.subtitle}</p>
+                          )}
+                        </div>
 
-              {/* Socialpreneurs Program */}
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="order-2 md:order-1">
-                  <h2 className="text-3xl font-bold tracking-tight text-black">Socialpreneurs Program</h2>
-                  <p className="mt-4 text-gray-600">
-                    The Socialpreneurs Program supports young Africans who are passionate about creating social impact
-                    through entrepreneurship. This program provides training, mentorship, and seed funding to help
-                    participants develop and launch their social ventures.
-                  </p>
-                  <Card className="mt-6 p-6 border border-gray-200">
-                    <h3 className="text-xl font-bold text-black">Benefits & Success Stories</h3>
-                    <p className="mt-2 text-gray-600">
-                      Participants receive guidance on business planning, fundraising, and impact measurement. Alumni
-                      have launched successful social enterprises addressing critical issues in their communities, from
-                      education and healthcare to environmental sustainability.
-                    </p>
-                  </Card>
-                  <div className="mt-6">
-                    <Button className="bg-red-600 hover:bg-red-700 text-white font-bold transition-transform hover:scale-105">
-                      Learn More
-                    </Button>
-                  </div>
-                </div>
-                <div className="order-1 md:order-2">
-                  <div className="bg-red-50 rounded-xl p-2">
-                    <img
-                      alt="Group of entrepreneurs collaborating"
-                      className="rounded-lg aspect-square object-cover w-full"
-                      src="/african-entrepreneurs-collaborating.jpg"
-                    />
-                  </div>
-                </div>
-              </div>
+                        <p className="text-lg font-semibold text-red-600 mb-3">
+                          {program.description}
+                        </p>
 
-              {/* Future Programs */}
-              <div className="text-center bg-gray-50 border border-gray-200 p-8 md:p-12 rounded-xl">
-                <h2 className="text-3xl font-bold tracking-tight text-black">Future Programs</h2>
-                <p className="mt-4 max-w-2xl mx-auto text-gray-600">
-                  We are constantly developing new programs to meet the evolving needs of African youth. Stay tuned for
-                  upcoming initiatives focused on digital literacy, green innovation, and creative industries. Sign up
-                  for our newsletter to receive updates and be the first to know when new programs launch.
-                </p>
-                <div className="mt-8 flex justify-center">
-                  <Button
-                    variant="outline"
-                    className="border-red-600/20 bg-red-600/10 text-red-600 font-bold hover:bg-red-600/20 transition-transform hover:scale-105"
-                  >
-                    Subscribe
-                  </Button>
+                        <p className="text-gray-700 mb-4">
+                          {program.details}
+                        </p>
+
+                        <div className="mb-6 flex-grow">
+                          <h4 className="font-bold text-black mb-2 text-sm">Key Highlights:</h4>
+                          <ul className="space-y-1 text-sm text-gray-700">
+                            {program.highlights.map((highlight, i) => (
+                              <li key={i} className="flex gap-2">
+                                <span className="text-red-600">•</span>
+                                <span>{highlight}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <Link href={program.link} className="block">
+                          <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold">
+                            {program.cta}
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
+
+                {pillarIdx < programs.length - 1 && (
+                  <div className="mt-16 border-t border-gray-200" />
+                )}
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-black mb-4">
+              Ready to Start Your Journey?
+            </h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Join thousands of students building their future across Africa
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/">
+                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3">
+                  Go Back Home
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button className="border border-red-200 bg-red-50 text-red-600 font-bold px-8 py-3 hover:bg-red-100">
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
