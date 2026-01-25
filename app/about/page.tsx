@@ -1,42 +1,130 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Linkedin } from "lucide-react"
+import { coreLeadership, teamLeads, partners } from "@/lib/data/team"
 
 export default function AboutPage() {
+
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <Header />
 
       <main className="flex-1">
-        {/* About Section */}
-        <section className="w-full py-16 md:py-24 lg:py-32">
+        {/* Hero Section */}
+        <section className="relative py-24 md:py-40 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-blue-50/30 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-red-100/40 rounded-full blur-3xl -z-10" />
+          
+          <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <div className="max-w-3xl">
+              <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-black mb-6 text-balance leading-tight">
+                About EYII
+              </h1>
+              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full mb-8" />
+              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+                Empowering African Youth Through Innovation and Opportunity. EYII is building the largest youth empowerment ecosystem in Africa.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Mission & Vision Section */}
+        <section className="w-full py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-              <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-black">
-                  About Emerge Youth
-                </h2>
-                <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Emerge Youth Innovation Initiative is dedicated to empowering African youth through innovation,
-                  entrepreneurship, and career development. Our mission is to create opportunities and foster growth for
-                  the next generation of leaders.
-                </p>
-              </div>
-              <div className="flex flex-col items-start space-y-4">
-                <div className="inline-block rounded-lg bg-red-600/10 px-3 py-1 text-sm font-medium text-red-600">
-                  Our Mission & Vision
+            <div className="grid gap-12 lg:grid-cols-2">
+              <div className="bg-white rounded-2xl p-8 border border-red-100 shadow-lg">
+                <div className="inline-block rounded-lg bg-red-600/10 px-4 py-2 mb-6 border border-red-200">
+                  <span className="text-sm font-semibold text-red-600">Our Mission</span>
                 </div>
-                <p className="text-gray-600">
-                  <strong className="font-semibold text-black">Mission:</strong> To empower African youth by providing
-                  access to innovative programs, entrepreneurial resources, and career development opportunities,
-                  fostering a generation of leaders and change-makers.
-                </p>
-                <p className="text-gray-600">
-                  <strong className="font-semibold text-black">Vision:</strong> To be the leading catalyst for youth
-                  empowerment in Africa, driving sustainable development and creating a vibrant ecosystem where young
-                  people can thrive and contribute to the continent's growth.
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  EYII provides structured pathways to opportunity for African students through four pillars: <span className="font-semibold">Career Development, Entrepreneurship, Innovation, and Leadership.</span> We exist to remove barriers and create access to world-class programs, mentorship, and networks that transform futures.
                 </p>
               </div>
+              <div className="bg-white rounded-2xl p-8 border border-blue-100 shadow-lg">
+                <div className="inline-block rounded-lg bg-blue-600/10 px-4 py-2 mb-6 border border-blue-200">
+                  <span className="text-sm font-semibold text-blue-600">Our Vision</span>
+                </div>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  To be the platform every African student uses to access opportunities and build their future. <span className="font-semibold">By 2027, we envision EYII on every ambitious student's phone across the continent.</span> We're committed to creating systemic change.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Leadership Team Section */}
+        <section className="w-full py-20 md:py-28">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-black mb-6">Leadership Team</h2>
+              <div className="h-1 w-32 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
+              <p className="mt-6 text-lg text-gray-600">Meet the leaders driving EYII's mission</p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {coreLeadership.map((leader, index) => (
+                <Card key={index} className="bg-white border border-red-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="relative w-full aspect-square bg-gradient-to-br from-red-50 to-gray-100">
+                      <img 
+                        src={leader.image}
+                        alt={leader.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-8">
+                      <h3 className="text-2xl font-bold text-black mb-2">{leader.name}</h3>
+                      <p className="text-red-600 font-semibold mb-6">{leader.role}</p>
+                      <div className="flex gap-3">
+                        <a href={leader.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn" className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors">
+                          <Linkedin className="h-5 w-5" />
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Team Leads Section */}
+        <section className="w-full py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-black mb-6">Team Leads</h2>
+              <div className="h-1 w-32 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
+              <p className="mt-6 text-lg text-gray-600">Passionate individuals driving our programs</p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {teamLeads.map((member, index) => (
+                <Card key={index} className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 rounded-xl overflow-hidden group h-full flex flex-col">
+                  <CardContent className="p-0 flex flex-col h-full">
+                    <div className="relative w-full aspect-square bg-gradient-to-br from-gray-50 to-gray-100">
+                      <img 
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6 flex flex-col justify-between flex-1">
+                      <div>
+                        <h3 className="font-bold text-black mb-2 text-lg group-hover:text-red-600 transition-colors">{member.name}</h3>
+                        <p className="text-gray-600 text-sm mb-6 leading-relaxed">{member.role}</p>
+                      </div>
+                      <div className="flex gap-2">
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn" className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors">
+                          <Linkedin className="h-4 w-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
@@ -110,7 +198,7 @@ export default function AboutPage() {
                       <h3 className="text-xl font-bold text-black">Integrity</h3>
                     </div>
                     <p className="text-gray-600">
-                      We uphold the highest standards of ethics and transparency in all we do.
+                      We uphold the highest standards of ethics and transparency.
                     </p>
                   </CardContent>
                 </Card>
@@ -119,93 +207,53 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className="w-full py-16 md:py-24 lg:py-32">
+        {/* Partners Section */}
+        <section className="w-full py-20 md:py-28">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-black">
-                  Meet Our Team
-                </h2>
-                <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl/relaxed">
-                  The passionate individuals driving our mission forward.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                <div className="flex flex-col items-center gap-4 text-center">
-                  <img
-                    alt="Aisha Diallo"
-                    className="h-32 w-32 rounded-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLFb4Rsz3URF4dUwGGa5uiDLTrLOUiKLConYmibaKPMeNjnLbquw-bNm9YwaEafUPySADUE3xeQtcI_IUj7CtTxj67WhzVlUdxz6MOC141QGYVbr1mAfph2NjLINY7-Guk7yNBT5RQHGhEXBvoFQpDD-gBStjFhZQNafrLMyiM_0MkVo6d4OXAD62ks6jFwgWAKFmlO2EmYQai-Ax6tPQbQr6U77ci1NMBv3n2jPcgH_zonM7MjamB8uo2wopL8XaOXTyn9-6aEdFS"
-                  />
-                  <div>
-                    <h4 className="text-lg font-bold text-black">Aisha Diallo</h4>
-                    <p className="text-sm text-gray-600">Executive Director</p>
-                  </div>
-                </div>
+            <div className="mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-black mb-6">Our Partners & Supporters</h2>
+              <div className="h-1 w-32 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
+              <p className="mt-6 text-lg text-gray-600">Organizations supporting our mission to empower African youth</p>
+            </div>
 
-                <div className="flex flex-col items-center gap-4 text-center">
-                  <img
-                    alt="Kwame Mensah"
-                    className="h-32 w-32 rounded-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcAmtv3er_dA8drQUpESk9HPbeDOEJNaq9LCpPmhtGrt3IPaKD0A08avRAq7zrIPIzUFeYk-U9t_3-EPuu5kSGaUA-7FKo1zAdNCDymplN7kVT5W3NmphQhbnuGuewvHtwAzH6f07eEv0Xljy3VR-JghNCX-sCgOjRW1WV1CYUyJDEctOsYvDxPVO52LNUktuICrG8dY45O-sfEj6gVV3vozjjWHKeiUgClickErBvZny-qZ982-i-JdtAtyI-a6ZSuMiqDIsqA8nx"
-                  />
-                  <div>
-                    <h4 className="text-lg font-bold text-black">Kwame Mensah</h4>
-                    <p className="text-sm text-gray-600">Program Manager</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center gap-4 text-center">
-                  <img
-                    alt="Fatima Hassan"
-                    className="h-32 w-32 rounded-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIIxRR7U6nruGE9TFdzVhZqQxf1ryzdTFAgoVfMdRWJ_3lRUUKZ92E0OaUw6N3gpRAKweN8LP-frGXgfCuLznDc7F28CsCxQrhZbS4v46N7xJ1HBSxB6psyDgrjqEF42fyHgUY2gNalJZe8BkD3n1l61CdmIhrZftrltPNX7LcgsZRkWlSolE-hICNBYpYdIZFdZV63FkgLh6GnrfoggZhpcZ9UGWLodQyoewgh0-TazSxZ4Ur8oiegNL0-BkEyriYcd0vk2861ifo"
-                  />
-                  <div>
-                    <h4 className="text-lg font-bold text-black">Fatima Hassan</h4>
-                    <p className="text-sm text-gray-600">Community Outreach</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center gap-4 text-center">
-                  <img
-                    alt="Chidi Okoro"
-                    className="h-32 w-32 rounded-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVJqMlFYN02FTci3QcqAFR80U3oDqLYW86MwW_890rE8mZMg8ROzOEN7mCY9PjJq65n42lGuDuR-w0tX1zlIDPIvL1QxCUdzO5i7S450pvf9u8wjXNg3mre2Kzu7EuYPq6RhjrVkhmh9Bj1dxe8EPpUH5uQIpX9919yLJQO2J1CphgF9xtozQ7gdJik6xyMFv_I_kZu5zU4SUoIrHivJIPNQW5U_VqL-PPioJ3sTvY03Ku35xittoo7-gQ4mlTSjExQ_d82qiD9IWI"
-                  />
-                  <div>
-                    <h4 className="text-lg font-bold text-black">Chidi Okoro</h4>
-                    <p className="text-sm text-gray-600">Partnerships Lead</p>
-                  </div>
-                </div>
-              </div>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {partners.map((partner, index) => (
+                <Card key={index} className="bg-gradient-to-br from-white to-gray-50 border border-red-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 rounded-2xl overflow-hidden group">
+                  <CardContent className="p-0">
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 to-red-400" />
+                    <div className="relative w-full h-48 bg-white flex items-center justify-center p-8">
+                      <img 
+                        src={partner.image}
+                        alt={partner.name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                    <div className="p-8 text-center border-t border-gray-100">
+                      <h3 className="text-xl font-bold text-black group-hover:text-red-600 transition-colors">{partner.name}</h3>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Partners Section */}
-        <section className="w-full bg-gray-50 py-16 md:py-24 lg:py-32">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="space-y-12">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-black">
-                  Our Partners & Supporters
-                </h2>
-                <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl/relaxed">
-                  We are grateful for the support of our partners who make our work possible.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 place-items-center gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="aspect-square w-32 bg-slate-200 rounded-lg flex items-center justify-center grayscale hover:grayscale-0 transition-all"
-                  >
-                    <span className="text-slate-400 text-xs">Partner Logo</span>
-                  </div>
-                ))}
-              </div>
+        {/* Final CTA Section */}
+        <section className="w-full py-20 md:py-28 bg-gradient-to-br from-red-50 to-white">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">Ready to Join Us?</h2>
+            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">Be part of the movement empowering African youth</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/programs">
+                <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-8 py-4 text-lg shadow-lg transition-all hover:shadow-xl rounded-lg">
+                  Explore Programs
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button className="border-2 border-red-600 text-red-600 bg-white hover:bg-red-50 font-bold px-8 py-4 text-lg transition-all rounded-lg">
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
