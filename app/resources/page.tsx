@@ -1,293 +1,271 @@
+'use client'
+
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { FAQSection } from '@/components/faq-section'
+import { FadeInUp, StaggerContainer, AnimatedGradientBar, FloatingElement } from '@/components/animations'
+import { BookOpen, Download, Mail, FileText, Lightbulb, Users, Target, Briefcase, Crown, ExternalLink, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function ResourcesPage() {
   const resourceFaqs = [
     {
       question: 'Are all resources free?',
-      answer:
-        'Yes, all resources in our library are completely free for EYII community members. We believe knowledge and tools should not be behind paywalls. Some resources like video courses may require email signup for tracking purposes.',
+      answer: 'Yes, all resources in our library are completely free for EYII community members. We believe knowledge and tools should not be behind paywalls.',
     },
     {
       question: 'Can I download resources for offline use?',
-      answer:
-        'Most resources can be downloaded as PDF or other formats. Once you download them, they are yours to keep and use. You can access them offline anytime, anywhere.',
+      answer: 'Most resources can be downloaded as PDF or other formats. Once you download them, they are yours to keep and use offline.',
     },
     {
       question: 'How often are new resources added?',
-      answer:
-        'We add new resources weekly based on community feedback and emerging needs. You can subscribe to our newsletter to get notified when new resources are added to your areas of interest.',
+      answer: 'We add new resources weekly based on community feedback and emerging needs. Subscribe to our newsletter to get notified.',
     },
     {
       question: 'Can I contribute resources?',
-      answer:
-        'Absolutely! We welcome community members to contribute templates, guides, case studies, and other resources they have created. Contact us to learn how to submit your resource for community benefit.',
+      answer: 'Absolutely! We welcome community members to contribute templates, guides, and other resources. Contact us to learn how to submit.',
     },
     {
       question: 'Who creates these resources?',
-      answer:
-        'Resources are created by EYII team members, mentors, industry experts, and community members. We ensure all resources are high-quality, practical, and contextual to African opportunities and challenges.',
+      answer: 'Resources are created by EYII team members, mentors, industry experts, and community members. We ensure all resources are high-quality and contextual to African opportunities.',
     },
     {
       question: 'Are resources specific to African context?',
-      answer:
-        'Yes! Most of our resources are specifically written or adapted for African students and founders. We highlight Africa-specific opportunities, challenges, strategies, and success stories.',
+      answer: 'Yes! Most of our resources are specifically written or adapted for African students and founders with Africa-specific opportunities and strategies.',
     },
   ]
 
   const resourceCategories = [
     {
       title: 'Career Development Guides',
-      description:
-        'Resume templates, interview prep guides, networking scripts, LinkedIn optimization playbooks, and salary negotiation frameworks.',
+      description: 'Resume templates, interview prep guides, networking scripts, LinkedIn optimization playbooks.',
       status: 'Coming Soon',
+      icon: Briefcase,
     },
     {
       title: 'Entrepreneurship Toolkit',
-      description:
-        'Business model canvas templates, pitch deck examples, fundraising guides, startup checklists, and founder stories.',
+      description: 'Business model canvas templates, pitch deck examples, fundraising guides, startup checklists.',
       status: 'Coming Soon',
+      icon: Target,
     },
     {
       title: 'Innovation Resources',
-      description:
-        'Design thinking frameworks, problem-solving toolkits, case study libraries, and innovation methodologies.',
+      description: 'Design thinking frameworks, problem-solving toolkits, case study libraries.',
       status: 'Coming Soon',
+      icon: Lightbulb,
     },
     {
       title: 'Leadership Library',
-      description:
-        'Leadership frameworks, team management guides, communication templates, and personal development resources.',
+      description: 'Leadership frameworks, team management guides, communication templates.',
       status: 'Coming Soon',
+      icon: Crown,
     },
     {
       title: 'Opportunity Database',
-      description:
-        'Curated list of internships, scholarships, competitions, grants, and programs for African students.',
+      description: 'Curated list of internships, scholarships, competitions, grants for African students.',
       status: 'Coming Soon',
+      icon: BookOpen,
     },
   ]
 
   const currentResources = [
     {
       title: 'ASN Resource Hub',
-      description:
-        'Access the African Students Network resource library with career guides, templates, and recorded workshops.',
+      description: 'Access the African Students Network resource library with career guides, templates, and recorded workshops.',
       cta: 'Visit ASN Resources →',
       link: 'https://asnafrica.org',
     },
     {
       title: 'EYII Newsletter',
-      description:
-        'Weekly insights, opportunities, and stories delivered to your inbox. Stay updated on programs, events, and community news.',
+      description: 'Weekly insights, opportunities, and stories delivered to your inbox. Stay updated on programs and community news.',
       cta: 'Subscribe on Substack →',
       link: '#',
     },
   ]
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-background">
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-grow pt-20">
         {/* Hero Section */}
-        <section className="relative py-24 md:py-40 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-blue-50/30 pointer-events-none" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-red-100/40 rounded-full blur-3xl -z-10" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl -z-10" />
+        <section className="relative py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-soft-gradient" />
+          <FloatingElement className="absolute top-20 right-10 w-72 h-72 bg-red-200/30 dark:bg-red-900/20 rounded-full blur-3xl" duration={10}>
+            <div />
+          </FloatingElement>
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black mb-6 text-balance leading-tight">
-                Resources Hub
-              </h1>
-              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full mb-8" />
-              <p className="text-lg md:text-xl text-gray-700 mb-6 text-pretty leading-relaxed max-w-2xl">
-                Guides, tools, and content to support your journey
-              </p>
-              <p className="text-base md:text-lg text-gray-600 mb-12 text-pretty leading-relaxed max-w-3xl">
-                We are building a comprehensive library of resources to help you succeed in your career, entrepreneurship, and leadership journey. Check back soon for exciting additions!
-              </p>
+              <FadeInUp>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-medium mb-6">
+                  <BookOpen className="h-4 w-4" />
+                  Resource Library
+                </div>
+              </FadeInUp>
+              
+              <FadeInUp delay={0.1}>
+                <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground mb-6 leading-tight">
+                  Free <span className="gradient-text">Resources</span>
+                </h1>
+              </FadeInUp>
+              
+              <AnimatedGradientBar />
+              
+              <FadeInUp delay={0.2}>
+                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mt-8">
+                  Templates, guides, and tools to accelerate your growth
+                </p>
+              </FadeInUp>
             </div>
           </div>
         </section>
 
         {/* Coming Soon Resources */}
-        <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
+        <section className="py-20 md:py-28 bg-soft-gradient">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                What is Coming to the Resources Hub
+            <FadeInUp>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
+                What is <span className="gradient-text">Coming</span>
               </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
-            </div>
+            </FadeInUp>
+            <AnimatedGradientBar />
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {resourceCategories.map((category, index) => (
-                <Card
-                  key={index}
-                  className="bg-white border border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden p-0"
-                >
-                  <div className="h-1 bg-gradient-to-r from-red-600 to-red-400" />
-                  <CardContent className="p-8">
-                    <div className="flex items-start justify-between mb-4">
-                      <h3 className="text-lg font-bold text-black flex-1">
-                        {category.title}
-                      </h3>
-                      <span className="ml-2 inline-block px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-full whitespace-nowrap">
-                        {category.status}
-                      </span>
-                    </div>
-                    <p className="text-gray-700 leading-relaxed">
-                      {category.description}
-                    </p>
-                  </CardContent>
-                </Card>
+            <StaggerContainer staggerDelay={0.1} className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
+              {resourceCategories.map((category, idx) => (
+                <motion.div key={idx} whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+                  <Card className="glass-card border-0 shadow-xl rounded-2xl overflow-hidden h-full">
+                    <div className="h-1.5 bg-gradient-to-r from-red-600 to-orange-500" />
+                    <CardContent className="p-8">
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 flex items-center justify-center">
+                          <category.icon className="h-6 w-6 text-red-600 dark:text-red-400" />
+                        </div>
+                        <span className="inline-block px-3 py-1 text-xs font-semibold text-white bg-gradient-to-r from-red-600 to-red-500 rounded-full">
+                          {category.status}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-bold text-foreground mb-3">{category.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{category.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
         {/* Available Now */}
-        <section className="py-20 md:py-32">
+        <section className="py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                Available Now
+            <FadeInUp>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
+                Available <span className="gradient-text">Now</span>
               </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
-            </div>
+            </FadeInUp>
+            <AnimatedGradientBar />
 
-            <div className="grid gap-8 md:grid-cols-2">
-              {currentResources.map((resource, index) => (
-                <Card
-                  key={index}
-                  className="bg-gradient-to-br from-red-50 to-white border border-red-200 hover:shadow-2xl transition-all duration-300 rounded-xl p-8"
-                >
-                  <h3 className="text-2xl font-bold text-black mb-4">
-                    {resource.title}
-                  </h3>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    {resource.description}
-                  </p>
-                  <a href={resource.link}>
-                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg">
-                      {resource.cta}
-                    </Button>
-                  </a>
-                </Card>
+            <div className="grid gap-8 md:grid-cols-2 mt-12">
+              {currentResources.map((resource, idx) => (
+                <FadeInUp key={idx} delay={idx * 0.1}>
+                  <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
+                    <Card className="glass-card border-0 shadow-xl rounded-2xl p-8 h-full">
+                      <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 flex items-center justify-center mb-6">
+                        <Download className="h-6 w-6 text-red-600 dark:text-red-400" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-foreground mb-4">{resource.title}</h3>
+                      <p className="text-muted-foreground mb-6 leading-relaxed">{resource.description}</p>
+                      <a href={resource.link}>
+                        <Button className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-xl shadow-lg">
+                          {resource.cta}
+                        </Button>
+                      </a>
+                    </Card>
+                  </motion.div>
+                </FadeInUp>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Why Resources Matter */}
-        <section className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white">
+        {/* Why Section */}
+        <section className="py-20 md:py-28 bg-soft-gradient">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                Why We are Building This
+            <FadeInUp>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
+                Why We are <span className="gradient-text">Building This</span>
               </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
-            </div>
+            </FadeInUp>
+            <AnimatedGradientBar />
 
-            <div className="grid gap-8 md:grid-cols-3">
+            <StaggerContainer staggerDelay={0.1} className="grid gap-8 md:grid-cols-3 mt-12">
               {[
-                {
-                  title: 'Access Shouldn\'t Be a Barrier',
-                  description:
-                    'High-quality career and entrepreneurship resources are often behind paywalls or scattered across the internet. We are centralizing them for free.',
-                },
-                {
-                  title: 'Africa-Specific Context Matters',
-                  description:
-                    'Most resources are written for Western audiences. We are creating guides that understand African realities, markets, and opportunities.',
-                },
-                {
-                  title: 'Save Time, Focus on Growth',
-                  description:
-                    'Instead of spending hours searching for templates and guides, find everything you need in one place and focus on execution.',
-                },
-              ].map((reason, index) => (
-                <Card
-                  key={index}
-                  className="bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all rounded-xl p-8"
-                >
-                  <h3 className="text-lg font-bold text-black mb-4">
-                    {reason.title}
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    {reason.description}
-                  </p>
-                </Card>
+                { title: "Access Shouldn't Be a Barrier", description: 'High-quality resources are often behind paywalls. We are centralizing them for free.' },
+                { title: 'Africa-Specific Context Matters', description: 'We are creating guides that understand African realities, markets, and opportunities.' },
+                { title: 'Save Time, Focus on Growth', description: 'Find everything you need in one place and focus on execution.' },
+              ].map((reason, idx) => (
+                <motion.div key={idx} whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
+                  <Card className="glass-card border-0 shadow-lg rounded-2xl p-8 h-full">
+                    <h3 className="text-lg font-bold text-foreground mb-4">{reason.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
+                  </Card>
+                </motion.div>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-16 md:py-24 bg-black text-white">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Stay Updated
-              </h2>
+        <section className="py-16 md:py-24 bg-gray-950 text-white relative overflow-hidden">
+          <div className="absolute inset-0 gradient-mesh opacity-20" />
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <FadeInUp>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
+                <Mail className="w-4 h-4 text-red-400" />
+                <span className="text-sm font-medium text-gray-300">Stay Updated</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Get Resources Delivered</h2>
               <p className="text-lg text-gray-300 mb-8">
-                Get resources delivered to your inbox
-              </p>
-              <p className="text-gray-400 mb-8">
-                Subscribe to our newsletter for curated opportunities, insights, and updates on new resources as we launch them.
+                Subscribe to our newsletter for curated opportunities and updates.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg text-black placeholder-gray-400"
+                  className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
-                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-lg transition-all hover:scale-105">
+                <Button className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold px-8 py-3 rounded-xl shadow-lg">
                   Subscribe
                 </Button>
               </div>
-              <p className="text-xs text-gray-500 mt-4">
-                We publish weekly. Unsubscribe anytime.
-              </p>
-            </div>
+            </FadeInUp>
           </div>
         </section>
 
-        {/* Final CTA */}
+        {/* CTA Section */}
         <section className="py-16 md:py-24">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-              Building Something Special
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              We are working hard to launch our full resource library
-            </p>
-            <p className="text-base text-gray-600 mb-8">
-              In the meantime, subscribe to our newsletter to get curated resources, opportunities, and updates delivered weekly.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/programs">
-                <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-8 py-3 rounded-lg transition-all hover:scale-105">
-                  Explore Programs
-                </Button>
-              </a>
-              <Button className="border-2 border-red-600 text-red-600 bg-white hover:bg-red-50 font-bold px-8 py-3 rounded-lg transition-all hover:scale-105">
-                Subscribe to Newsletter
-              </Button>
-            </div>
+            <FadeInUp>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Want More Resources?</h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Join our community to get access to exclusive resources, workshops, and mentorship.
+              </p>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
+                <a href="/community">
+                  <Button className="bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold px-8 py-3 rounded-xl shadow-lg">
+                    Join Community
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </a>
+              </motion.div>
+            </FadeInUp>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <FAQSection
-          title="Resources FAQs"
-          faqs={resourceFaqs}
-        />
+        <FAQSection faqs={resourceFaqs} title="Resource FAQs" subtitle="Common questions about our resources" />
       </main>
 
       <Footer />
