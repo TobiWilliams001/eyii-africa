@@ -14,10 +14,12 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // NEW: Gradient variant for CTAs
+        // Gradient variant for CTAs
         gradient: "bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white shadow-lg shadow-red-500/20 hover:shadow-xl hover:shadow-red-500/30",
-        // NEW: Glass variant for glassmorphism
+        // Glass variant for glassmorphism
         glass: "glass-card border-0 text-foreground hover:bg-white/20 dark:hover:bg-white/10",
+        // NEW: Outline variant for dark backgrounds (white text stays visible)
+        "outline-light": "border border-white/30 bg-transparent text-white hover:bg-white/20 hover:text-white backdrop-blur-sm",
       },
       size: {
         default: "h-10 px-4 py-2",
