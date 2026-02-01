@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Linkedin, Users, Lightbulb, Shield, ArrowRight } from 'lucide-react'
+import { Linkedin, Users, Lightbulb, Shield, ArrowRight, Heart, Target } from 'lucide-react'
 import { coreLeadership, teamLeads, partners } from '@/lib/data/team'
 import { FadeInUp, StaggerContainer, AnimatedGradientBar, FloatingElement } from '@/components/animations'
 import { motion } from 'framer-motion'
@@ -40,7 +41,7 @@ export default function AboutPage() {
           <FloatingElement className="absolute top-20 right-10 w-72 h-72 bg-red-200/30 dark:bg-red-900/20 rounded-full blur-3xl" duration={10}>
             <div />
           </FloatingElement>
-          <FloatingElement className="absolute bottom-20 left-10 w-96 h-96 bg-orange-200/20 dark:bg-orange-900/10 rounded-full blur-3xl" duration={12} delay={2}>
+          <FloatingElement className="absolute bottom-20 left-10 w-96 h-96 bg-slate-200/20 dark:bg-slate-900/10 rounded-full blur-3xl" duration={12} delay={2}>
             <div />
           </FloatingElement>
 
@@ -68,24 +69,32 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <StaggerContainer staggerDelay={0.15} className="grid gap-8 lg:grid-cols-2">
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                <Card className="glass-card border-0 shadow-xl rounded-2xl p-8 h-full">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-semibold mb-6">
-                    Our Mission
+                <Card className="glass-card border-0 shadow-xl rounded-2xl overflow-hidden h-full">
+                  <div className="h-1.5 bg-gradient-to-r from-red-600 to-red-500" />
+                  <div className="p-8">
+                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900/30 dark:to-red-800/30 flex items-center justify-center mb-6">
+                      <Target className="h-6 w-6 text-red-600 dark:text-red-400" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      EYII provides structured pathways to opportunity for African students through four pillars: <span className="font-semibold text-foreground">Career Development, Entrepreneurship, Innovation, and Leadership.</span> We exist to remove barriers and create access to world-class programs, mentorship, and networks that transform futures.
+                    </p>
                   </div>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    EYII provides structured pathways to opportunity for African students through four pillars: <span className="font-semibold text-foreground">Career Development, Entrepreneurship, Innovation, and Leadership.</span> We exist to remove barriers and create access to world-class programs, mentorship, and networks that transform futures.
-                  </p>
                 </Card>
               </motion.div>
               
               <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                <Card className="glass-card border-0 shadow-xl rounded-2xl p-8 h-full">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold mb-6">
-                    Our Vision
+                <Card className="glass-card border-0 shadow-xl rounded-2xl overflow-hidden h-full">
+                  <div className="h-1.5 bg-gradient-to-r from-slate-700 to-slate-600" />
+                  <div className="p-8">
+                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800/50 dark:to-slate-700/50 flex items-center justify-center mb-6">
+                      <Heart className="h-6 w-6 text-slate-700 dark:text-slate-300" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-4">Our Vision</h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      To be the platform every African student uses to access opportunities and build their future. <span className="font-semibold text-foreground">By 2027, we envision EYII on every ambitious student's phone across the continent.</span> We're committed to creating systemic change.
+                    </p>
                   </div>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    To be the platform every African student uses to access opportunities and build their future. <span className="font-semibold text-foreground">By 2027, we envision EYII on every ambitious student's phone across the continent.</span> We're committed to creating systemic change.
-                  </p>
                 </Card>
               </motion.div>
             </StaggerContainer>
@@ -107,9 +116,9 @@ export default function AboutPage() {
 
             <StaggerContainer staggerDelay={0.1} className="grid gap-8 md:grid-cols-3 mt-12">
               {coreLeadership.map((leader, index) => (
-                <motion.div key={index} whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+                <motion.div key={leader.id} whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
                   <Card className="glass-card border-0 shadow-xl rounded-2xl overflow-hidden h-full group">
-                    <div className="h-1.5 bg-gradient-to-r from-red-600 to-orange-500" />
+                    <div className="h-1.5 bg-gradient-to-r from-red-600 to-slate-700" />
                     <CardContent className="p-0">
                       <div className="relative w-full aspect-square bg-gradient-to-br from-red-50 to-gray-100 dark:from-red-900/20 dark:to-gray-800">
                         {leader.image ? (
@@ -120,7 +129,7 @@ export default function AboutPage() {
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
-                            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white text-3xl font-bold">
+                            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-red-500 to-slate-700 flex items-center justify-center text-white text-3xl font-bold">
                               {leader.name.split(' ').map(n => n[0]).join('')}
                             </div>
                           </div>
@@ -165,8 +174,8 @@ export default function AboutPage() {
             </FadeInUp>
 
             <StaggerContainer staggerDelay={0.08} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
-              {teamLeads.map((member, index) => (
-                <motion.div key={index} whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
+              {teamLeads.map((member) => (
+                <motion.div key={member.id} whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
                   <Card className="glass-card border-0 shadow-lg rounded-2xl overflow-hidden h-full group">
                     <CardContent className="p-0 flex flex-col h-full">
                       <div className="relative w-full aspect-square bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
@@ -178,7 +187,7 @@ export default function AboutPage() {
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
-                            <div className="h-20 w-20 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white text-2xl font-bold">
+                            <div className="h-20 w-20 rounded-full bg-gradient-to-br from-red-500 to-slate-700 flex items-center justify-center text-white text-2xl font-bold">
                               {member.name.split(' ').map(n => n[0]).join('')}
                             </div>
                           </div>
@@ -235,11 +244,11 @@ export default function AboutPage() {
                 <motion.div key={index} whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
                   <Card className="glass-card border-0 shadow-xl rounded-2xl p-8 h-full">
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 flex items-center justify-center">
+                      <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-red-100 to-slate-100 dark:from-red-900/30 dark:to-slate-800/30 flex items-center justify-center">
                         <value.icon className="h-7 w-7 text-red-600 dark:text-red-400" />
                       </div>
-                      <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
                     </div>
+                    <h3 className="text-xl font-bold text-foreground mb-3">{value.title}</h3>
                     <p className="text-muted-foreground leading-relaxed">{value.description}</p>
                   </Card>
                 </motion.div>
@@ -251,44 +260,44 @@ export default function AboutPage() {
         {/* Partners Section */}
         <section className="py-20 md:py-28 bg-soft-gradient">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <FadeInUp>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
-                Our Partners & <span className="gradient-text">Supporters</span>
-              </h2>
-            </FadeInUp>
-            <AnimatedGradientBar />
-            <FadeInUp delay={0.1}>
-              <p className="mt-6 text-lg text-muted-foreground">Organizations supporting our mission to empower African youth</p>
-            </FadeInUp>
+            <div className="text-center mb-12">
+              <FadeInUp>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
+                  Our <span className="gradient-text">Partners</span>
+                </h2>
+              </FadeInUp>
+              <div className="flex justify-center">
+                <AnimatedGradientBar />
+              </div>
+              <FadeInUp delay={0.1}>
+                <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Organizations we collaborate with to expand opportunities for African youth.
+                </p>
+              </FadeInUp>
+            </div>
 
-            <StaggerContainer staggerDelay={0.08} className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-12">
-              {partners.map((partner, index) => (
-                <motion.div key={index} whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                  <Card className="glass-card border-0 shadow-lg rounded-2xl overflow-hidden h-full group">
-                    <div className="h-1 bg-gradient-to-r from-red-600 to-orange-500" />
-                    <CardContent className="p-8">
-                      <div className="flex items-center gap-4 mb-4">
-                        {partner.logo ? (
-                          <div className="h-16 w-16 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-700">
-                            <img src={partner.logo} alt={partner.name} className="h-12 w-12 object-contain" />
-                          </div>
+            <StaggerContainer staggerDelay={0.1} className="grid gap-8 md:grid-cols-3">
+              {partners.map((partner) => (
+                <motion.div key={partner.id} whileHover={{ y: -8, scale: 1.02 }} transition={{ duration: 0.3 }}>
+                  <Card className="glass-card border-0 shadow-xl rounded-2xl overflow-hidden h-full group">
+                    <div className="h-1 bg-gradient-to-r from-red-600 to-slate-700" />
+                    <CardContent className="p-8 flex flex-col items-center text-center">
+                      <div className="w-32 h-32 mb-6 rounded-2xl bg-white dark:bg-gray-800 p-4 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                        {partner.image ? (
+                          <img 
+                            src={partner.image}
+                            alt={partner.name}
+                            className="max-w-full max-h-full object-contain"
+                          />
                         ) : (
-                          <div className="h-16 w-16 rounded-xl bg-gradient-to-br from-red-100 to-orange-100 dark:from-red-900/30 dark:to-orange-900/30 flex items-center justify-center">
-                            <span className="text-2xl font-bold text-red-600 dark:text-red-400">
-                              {partner.name.charAt(0)}
-                            </span>
+                          <div className="h-20 w-20 rounded-full bg-gradient-to-br from-red-500 to-slate-700 flex items-center justify-center text-white text-xl font-bold">
+                            {partner.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
                           </div>
                         )}
-                        <div>
-                          <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">{partner.name}</h3>
-                          {partner.type && (
-                            <span className="text-sm text-muted-foreground">{partner.type}</span>
-                          )}
-                        </div>
                       </div>
-                      {partner.description && (
-                        <p className="text-muted-foreground text-sm leading-relaxed">{partner.description}</p>
-                      )}
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {partner.name}
+                      </h3>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -306,26 +315,28 @@ export default function AboutPage() {
           
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <FadeInUp>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Our Mission</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-slate-300">Mission</span>
+              </h2>
             </FadeInUp>
             <FadeInUp delay={0.1}>
-              <p className="text-lg text-gray-300 mb-8">
-                Be part of the movement empowering African youth to reach their full potential.
+              <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Whether you're a student seeking opportunities, a mentor wanting to give back, or an organization looking to partner, there's a place for you at EYII.
               </p>
             </FadeInUp>
             <FadeInUp delay={0.2}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/community">
+                <Link href="/programs">
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold px-8 py-3 rounded-xl shadow-lg shadow-red-500/20">
-                      Join Community
+                    <Button variant="gradient" size="lg">
+                      Explore Programs
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </motion.div>
                 </Link>
-                <Link href="/programs">
-                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-semibold px-8 py-3 rounded-xl backdrop-blur-sm">
-                    Explore Programs
+                <Link href="/contact">
+                  <Button variant="outline-light" size="lg">
+                    Get in Touch
                   </Button>
                 </Link>
               </div>
