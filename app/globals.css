@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Core Neutrals - Enhanced */
+  /* Core Neutrals */
   --background: oklch(0.995 0 0);
   --foreground: oklch(0.12 0 0);
   
@@ -14,30 +14,32 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.12 0 0);
   
-  /* Primary Red Brand - More Vibrant */
-  --primary: oklch(0.55 0.24 25);
+  /* Primary Red Brand - Logo Match #E53935 */
+  --primary: oklch(0.53 0.21 27);
   --primary-foreground: oklch(1 0 0);
   
-  /* Secondary/Accents */
-  --secondary: oklch(0.97 0.01 25);
-  --secondary-foreground: oklch(0.55 0.24 25);
+  /* Secondary Navy - Logo Arrow/Text #2D3E50 */
+  --secondary: oklch(0.30 0.04 250);
+  --secondary-foreground: oklch(1 0 0);
+  
+  /* Muted & Accents */
   --muted: oklch(0.96 0.005 0);
   --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.55 0.24 25);
+  --accent: oklch(0.53 0.21 27);
   --accent-foreground: oklch(1 0 0);
   
   /* Destructive */
-  --destructive: oklch(0.55 0.24 25);
+  --destructive: oklch(0.53 0.21 27);
   --destructive-foreground: oklch(1 0 0);
   
   /* Borders & Inputs */
   --border: oklch(0.92 0.005 0);
   --input: oklch(0.97 0.005 0);
-  --ring: oklch(0.55 0.24 25);
+  --ring: oklch(0.53 0.21 27);
   
   /* Chart Colors */
-  --chart-1: oklch(0.55 0.24 25);
-  --chart-2: oklch(0.58 0.2 40);
+  --chart-1: oklch(0.53 0.21 27);
+  --chart-2: oklch(0.30 0.04 250);
   --chart-3: oklch(0.55 0.2 250);
   --chart-4: oklch(0.6 0.2 300);
   --chart-5: oklch(0.55 0.15 160);
@@ -48,12 +50,12 @@
   /* Sidebar */
   --sidebar: oklch(0.995 0 0);
   --sidebar-foreground: oklch(0.12 0 0);
-  --sidebar-primary: oklch(0.55 0.24 25);
+  --sidebar-primary: oklch(0.53 0.21 27);
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.97 0.01 25);
-  --sidebar-accent-foreground: oklch(0.55 0.24 25);
+  --sidebar-accent-foreground: oklch(0.53 0.21 27);
   --sidebar-border: oklch(0.92 0.005 0);
-  --sidebar-ring: oklch(0.55 0.24 25);
+  --sidebar-ring: oklch(0.53 0.21 27);
 }
 
 .dark {
@@ -63,10 +65,15 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.12 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.65 0.24 25);
+  
+  /* Primary Red - Lighter for dark mode */
+  --primary: oklch(0.60 0.21 27);
   --primary-foreground: oklch(0.1 0 0);
-  --secondary: oklch(0.2 0 0);
+  
+  /* Secondary Navy - Lighter for dark mode */
+  --secondary: oklch(0.35 0.04 250);
   --secondary-foreground: oklch(0.98 0 0);
+  
   --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.65 0 0);
   --accent: oklch(0.2 0.05 25);
@@ -75,20 +82,20 @@
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.22 0 0);
   --input: oklch(0.22 0 0);
-  --ring: oklch(0.65 0.24 25);
-  --chart-1: oklch(0.65 0.24 25);
-  --chart-2: oklch(0.65 0.2 40);
+  --ring: oklch(0.60 0.21 27);
+  --chart-1: oklch(0.60 0.21 27);
+  --chart-2: oklch(0.40 0.04 250);
   --chart-3: oklch(0.65 0.2 250);
   --chart-4: oklch(0.65 0.2 300);
   --chart-5: oklch(0.6 0.15 160);
   --sidebar: oklch(0.12 0 0);
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.65 0.24 25);
+  --sidebar-primary: oklch(0.60 0.21 27);
   --sidebar-primary-foreground: oklch(0.1 0 0);
   --sidebar-accent: oklch(0.2 0.05 25);
   --sidebar-accent-foreground: oklch(0.98 0 0);
   --sidebar-border: oklch(0.22 0 0);
-  --sidebar-ring: oklch(0.65 0.24 25);
+  --sidebar-ring: oklch(0.60 0.21 27);
 }
 
 @theme inline {
@@ -185,8 +192,13 @@
       0 10px 15px -3px rgba(0, 0, 0, 0.4);
   }
 
-  /* GRADIENT TEXT */
+  /* GRADIENT TEXT - Logo Colors: Red to Navy */
   .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #E53935 0%, #2D3E50 100%);
+  }
+
+  .gradient-text-red {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-500 to-orange-500;
   }
 
@@ -194,75 +206,76 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500;
   }
 
-  /* ACCENT BAR */
+  /* ACCENT BAR - Brand Colors */
   .accent-bar {
-    @apply h-1.5 w-28 bg-gradient-to-r from-red-600 via-red-500 to-orange-500 rounded-full;
+    @apply h-1.5 w-28 rounded-full;
+    background: linear-gradient(90deg, #E53935 0%, #2D3E50 100%);
   }
 
   /* SOFT GRADIENT BACKGROUNDS */
   .bg-soft-gradient {
     background: linear-gradient(180deg, 
-      rgba(254, 242, 242, 0.6) 0%, 
+      rgba(229, 57, 53, 0.04) 0%, 
       rgba(255, 255, 255, 1) 40%,
       rgba(255, 255, 255, 1) 60%,
-      rgba(239, 246, 255, 0.4) 100%
+      rgba(45, 62, 80, 0.03) 100%
     );
   }
 
   .dark .bg-soft-gradient {
     background: linear-gradient(180deg, 
-      rgba(30, 15, 15, 0.6) 0%, 
+      rgba(229, 57, 53, 0.08) 0%, 
       rgba(18, 18, 18, 1) 40%,
       rgba(18, 18, 18, 1) 60%,
-      rgba(15, 20, 30, 0.4) 100%
+      rgba(45, 62, 80, 0.06) 100%
     );
   }
 
   .bg-subtle-pattern {
     background-image: 
-      radial-gradient(circle at 1px 1px, rgba(220, 38, 38, 0.04) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgba(229, 57, 53, 0.04) 1px, transparent 0);
     background-size: 32px 32px;
   }
 
   .dark .bg-subtle-pattern {
     background-image: 
-      radial-gradient(circle at 1px 1px, rgba(255, 100, 100, 0.03) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgba(229, 57, 53, 0.03) 1px, transparent 0);
   }
 
-  /* GRADIENT MESH */
+  /* GRADIENT MESH - Brand Colors */
   .gradient-mesh {
     background: 
-      radial-gradient(at 0% 0%, rgba(220, 38, 38, 0.12) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(251, 146, 60, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, rgba(229, 57, 53, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(45, 62, 80, 0.1) 0px, transparent 50%),
       radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(168, 85, 247, 0.06) 0px, transparent 50%);
+      radial-gradient(at 0% 100%, rgba(45, 62, 80, 0.06) 0px, transparent 50%);
   }
 
   .dark .gradient-mesh {
     background: 
-      radial-gradient(at 0% 0%, rgba(220, 38, 38, 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(251, 146, 60, 0.12) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, rgba(229, 57, 53, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(45, 62, 80, 0.12) 0px, transparent 50%),
       radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+      radial-gradient(at 0% 100%, rgba(45, 62, 80, 0.08) 0px, transparent 50%);
   }
 }
 
 @layer utilities {
-  /* MODERN SHADOWS */
+  /* MODERN SHADOWS - Brand Red */
   .shadow-glow {
-    box-shadow: 0 0 40px rgba(220, 38, 38, 0.12), 0 0 80px rgba(220, 38, 38, 0.06);
+    box-shadow: 0 0 40px rgba(229, 57, 53, 0.12), 0 0 80px rgba(229, 57, 53, 0.06);
   }
 
   .shadow-glow-lg {
-    box-shadow: 0 0 60px rgba(220, 38, 38, 0.18), 0 0 100px rgba(220, 38, 38, 0.08);
+    box-shadow: 0 0 60px rgba(229, 57, 53, 0.18), 0 0 100px rgba(229, 57, 53, 0.08);
   }
 
   .dark .shadow-glow {
-    box-shadow: 0 0 40px rgba(239, 68, 68, 0.15), 0 0 80px rgba(239, 68, 68, 0.08);
+    box-shadow: 0 0 40px rgba(229, 57, 53, 0.15), 0 0 80px rgba(229, 57, 53, 0.08);
   }
 
   .dark .shadow-glow-lg {
-    box-shadow: 0 0 60px rgba(239, 68, 68, 0.2), 0 0 100px rgba(239, 68, 68, 0.1);
+    box-shadow: 0 0 60px rgba(229, 57, 53, 0.2), 0 0 100px rgba(229, 57, 53, 0.1);
   }
 
   /* HOVER EFFECTS */
@@ -280,7 +293,7 @@
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.25);
+    box-shadow: 0 0 30px rgba(229, 57, 53, 0.25);
   }
 
   /* SMOOTH TRANSITIONS */
@@ -422,7 +435,7 @@
   .delay-1000 { animation-delay: 1000ms; }
 }
 
-/* CUSTOM SCROLLBAR */
+/* CUSTOM SCROLLBAR - Brand Colors */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -434,27 +447,27 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, oklch(0.55 0.24 25), oklch(0.6 0.2 30));
+  background: linear-gradient(180deg, #E53935, #2D3E50);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, oklch(0.5 0.24 25), oklch(0.55 0.2 30));
+  background: linear-gradient(180deg, #C62828, #1A252F);
 }
 
 .dark ::-webkit-scrollbar-track {
   background: oklch(0.15 0 0);
 }
 
-/* SELECTION */
+/* SELECTION - Brand Red */
 ::selection {
-  background-color: rgba(220, 38, 38, 0.2);
+  background-color: rgba(229, 57, 53, 0.2);
   color: inherit;
 }
 
 /* FOCUS STATES */
 *:focus-visible {
-  outline: 2px solid oklch(0.55 0.24 25 / 0.5);
+  outline: 2px solid oklch(0.53 0.21 27 / 0.5);
   outline-offset: 2px;
   border-radius: 4px;
 }
