@@ -60,7 +60,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <motion.div 
               whileHover={{ scale: 1.02 }}
-              className="relative h-12 w-12 sm:h-14 sm:w-14"
+              className="relative h-30 w-30 sm:h-34 sm:w-34"
             >
               <img 
                 src="/eyii-logo.png" 

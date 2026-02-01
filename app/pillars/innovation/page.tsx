@@ -169,7 +169,7 @@ export default function InnovationPage() {
                   </Button>
                 </motion.div>
                 <Link href="/pillars/leadership">
-                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 font-semibold px-8 py-3 rounded-xl">
+                  <Button variant="outline-light" className="border-white/20 text-white hover:bg-white/10 font-semibold px-8 py-3 rounded-xl">
                     Explore Leadership Pillar
                   </Button>
                 </Link>
