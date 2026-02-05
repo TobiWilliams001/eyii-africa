@@ -50,7 +50,7 @@ export function Footer() {
                   className="relative h-14 w-14"
                 >
                   <img 
-                    src="/eyii-logo.png" 
+                    src="/eyii-log.png" 
                     alt="EYII Logo" 
                     className="h-full w-full object-contain"
                   />
